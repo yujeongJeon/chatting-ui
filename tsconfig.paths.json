@@ -6,7 +6,8 @@
             "$scss/*": ["./scss/*"],
             "$types/*": ["./types/*"],
             "$stores/*": ["./stores/*"],
-            "$constants/*": ["./constants/*"]
+            "$constants/*": ["./constants/*"],
+            "$utils/*": ["./utils/*"]
         }
     }
 }

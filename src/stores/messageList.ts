@@ -1,4 +1,5 @@
 import { TMessage } from '$types/message';
+import { calcDateTime } from '$utils/time';
 import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
 
 const generateId = () => Math.random().toString().slice(8);
@@ -18,7 +19,7 @@ export const useMessageListState = () => {
                 ...prevMessageList,
                 {
                     id: generateId(), // 계산
-                    sendedAt: 'now', // 계산
+                    sendedAt: calcDateTime(), // 계산
                     ...message,
                 },
             ];
