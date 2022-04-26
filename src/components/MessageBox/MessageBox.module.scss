@@ -3,10 +3,6 @@
     flex-direction: row;
     display: flex;
 
-    .profile {
-        margin-right: 0.8rem;
-    }
-
     .content {
         margin-top: 1rem;
         .message {
@@ -20,7 +16,7 @@
             border-bottom-right-radius: 20px 14px;
         }
         .time-area {
-            font-size: .75rem;
+            font-size: 0.75rem;
             color: rgb(64, 64, 65);
             text-align: left;
         }
@@ -28,10 +24,6 @@
 
     &.isMe {
         flex-direction: row-reverse;
-        .profile {
-            margin-right: 0;
-            margin-left: 0.8rem;
-        }
         .message {
             text-align: right;
             border-bottom-right-radius: 5px;
