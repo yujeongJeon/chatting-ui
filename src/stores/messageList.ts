@@ -1,12 +1,24 @@
 import { TMessage } from '$types/message';
-import { calcDateTime } from '$utils/time';
+import { createSessionStorage } from '$utils/storageManager';
+import { calcDateTime, getNumberFromDate } from '$utils/time';
+import { useEffect } from 'react';
 import { atom, useRecoilValue, useSetRecoilState } from 'recoil';
 
 const generateId = () => Math.random().toString().slice(8);
 
+const sessionStorage = createSessionStorage();
+const STORAGE_KEY = 'MESSAGE_HISTORY';
+
+const getMessageList = (): TMessage[] => {
+    return sessionStorage.getToArray<Omit<TMessage, 'sendedAt'>>(STORAGE_KEY).map((message) => ({
+        ...message,
+        sendedAt: calcDateTime(message.createdAt),
+    }));
+};
+
 const MessageListState = atom<TMessage[]>({
     key: 'messageListState',
-    default: [],
+    default: getMessageList(),
 });
 
 export const useMessageListState = () => {
@@ -18,13 +30,21 @@ export const useMessageListState = () => {
             return [
                 ...prevMessageList,
                 {
-                    id: generateId(), // 계산
-                    sendedAt: calcDateTime(), // 계산
                     ...message,
+                    id: generateId(),
+                    sendedAt: '방금 전',
+                    createdAt: getNumberFromDate(new Date()),
                 },
             ];
         });
     };
+
+    useEffect(() => {
+        sessionStorage.set(
+            STORAGE_KEY,
+            messageList.map(({ text, sender, id, createdAt }) => ({ text, sender, id, createdAt })),
+        );
+    }, [messageList]);
 
     return {
         messageList,

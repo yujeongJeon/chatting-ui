@@ -1,9 +1,10 @@
-import { ReactNode } from "react"
-import { TUser } from "./user"
+import { ReactNode } from 'react';
+import { TUser } from './user';
 
 export type TMessage = {
-    text: ReactNode
-    id: string
-    sendedAt: string
-    sender: TUser
-}
+    text: ReactNode;
+    id: string;
+    sendedAt: string;
+    sender: TUser;
+    createdAt: number;
+};
