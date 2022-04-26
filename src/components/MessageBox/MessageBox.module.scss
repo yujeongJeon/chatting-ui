@@ -1,0 +1,46 @@
+.box {
+    flex: 1 0 auto;
+    flex-direction: row;
+    display: flex;
+
+    .profile {
+        margin-right: 0.8rem;
+    }
+
+    .content {
+        margin-top: 1rem;
+        .message {
+            background-color: #eee;
+            max-width: 200px;
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom-left-radius: 5px;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 15px 20px;
+            border-bottom-right-radius: 20px 14px;
+        }
+        .time-area {
+            font-size: .75rem;
+            color: rgb(64, 64, 65);
+            text-align: left;
+        }
+    }
+
+    &.isMe {
+        flex-direction: row-reverse;
+        .profile {
+            margin-right: 0;
+            margin-left: 0.8rem;
+        }
+        .message {
+            text-align: right;
+            border-bottom-right-radius: 5px;
+            border-top-right-radius: 0px;
+            border-top-left-radius: 15px 20px;
+            border-bottom-left-radius: 20px 14px;
+        }
+        .time-area {
+            text-align: right;
+        }
+    }
+}

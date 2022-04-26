@@ -1,0 +1,37 @@
+@mixin flex($args: ()) {
+    $flexitems: $args;
+    
+    @if $args == initial {
+        $flexitems: 0 1 auto;
+    } @else if $args == auto {
+        $flexitems: 1 1 auto;
+    } @else if $args == none {
+        $flexitems: 0 0 auto;
+    } @else if length($args) == 1 {
+        $flexitems: $args 1 0%;
+    }
+
+    -ms-flex: $flexitems;
+    flex: $flexitems;
+}
+
+.article {
+    width: 538px;
+    height: 56px;
+    margin: 0 auto;
+}
+
+.input {
+    border: none;
+    outline: none;
+    background-color: rgb(246, 246, 247);
+    margin: 0 auto;
+    padding: 0 15px;
+    font-size: 1rem;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 538px;
+    height: 56px;
+}

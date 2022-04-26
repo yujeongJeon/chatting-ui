@@ -1,0 +1,29 @@
+$content-max-width: 568px;
+
+%responsive-inner {
+    max-width: $content-max-width;
+    margin: 0 auto;
+}
+
+.article {
+    @extend %responsive-inner;
+    
+    overflow-y: auto;
+    position: relative;
+    height: 100%;
+    background-color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    margin-top: -56px;
+    padding-top: 56px;
+}
+
+.content {
+    padding: 0 0 20px;
+    flex: 1 0 auto;
+}
